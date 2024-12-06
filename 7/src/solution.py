@@ -15,5 +15,13 @@ Base.metadata.create_all(engine)
 
 
 # BEGIN (write your solution here)
-
+def delete_director(session, director_id):
+    director = session.query(Director).get(director_id)
+    
+    if director:
+        session.delete(director)
+        session.commit()
+        print(f"Director with ID {director_id} and their movies have been deleted.")
+    else:
+        print(f"Director with ID {director_id} not found.")
 # END
